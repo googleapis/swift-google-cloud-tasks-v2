@@ -26,10 +26,10 @@ let package = Package(
   dependencies: [
     .package(path: "../../packages/auth"),
     .package(path: "../../packages/gax"),
-    .package(path: "../../generated/google-cloud-location"),
+    .package(path: "../../generated/swift-google-cloud-location"),
     .package(path: "../../packages/wkt"),
-    .package(path: "../../generated/google-iam-v1"),
-    .package(path: "../../generated/google-rpc"),
+    .package(path: "../../generated/swift-google-iam-v1"),
+    .package(path: "../../generated/swift-google-rpc"),
     .package(url: "https://github.com/apple/swift-log", from: "1.12.0"),
   ],
   targets: [
@@ -38,10 +38,10 @@ let package = Package(
       dependencies: [
         .product(name: "GoogleCloudAuth", package: "auth"),
         .product(name: "GoogleCloudGax", package: "gax"),
-        .product(name: "GoogleCloudLocation", package: "google-cloud-location"),
+        .product(name: "GoogleCloudLocation", package: "swift-google-cloud-location"),
         .product(name: "GoogleCloudWKT", package: "wkt"),
-        .product(name: "GoogleIAMV1", package: "google-iam-v1"),
-        .product(name: "GoogleRpc", package: "google-rpc"),
+        .product(name: "GoogleIAMV1", package: "swift-google-iam-v1"),
+        .product(name: "GoogleRpc", package: "swift-google-rpc"),
         .product(name: "Logging", package: "swift-log"),
       ],
     )
