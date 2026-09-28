@@ -23,15 +23,12 @@ import GoogleIAMV1
 import GoogleLongRunning
 import GoogleWKT
 
-func sample(client: CloudTasksClient, projectId: String, locationId: String) async throws {
-  let response = try await client.createQueue(
-    request: CreateQueueRequest()
-      .with {
-        $0.parent = "projects/\(projectId)/locations/\(locationId)"
-        $0.queue = Queue() /* .with { ... } */
-      }
+func sample(client: CloudTasksClient) async throws {
+  try await client.batchDeleteTasksPollingUntilDone(
+    request: BatchDeleteTasksRequest()
+      /* set fields using .with { $0... } */
   )
-  print("Success: \(response)")
+  print("Success")
 }
 // snippet.hide
 
@@ -40,7 +37,7 @@ struct SnippetRunner {
   static func main() async throws {
     do {
       let client = try GoogleCloudTasksV2.CloudTasksClient()
-      try await sample(client: client, projectId: "[placeholder]", locationId: "[placeholder]")
+      try await sample(client: client)
     } catch {
       print("Error: \(error)")
     }

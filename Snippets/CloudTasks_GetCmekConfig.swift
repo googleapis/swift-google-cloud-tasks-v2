@@ -24,11 +24,10 @@ import GoogleLongRunning
 import GoogleWKT
 
 func sample(client: CloudTasksClient, projectId: String, locationId: String) async throws {
-  let response = try await client.createQueue(
-    request: CreateQueueRequest()
+  let response = try await client.getCmekConfig(
+    request: GetCmekConfigRequest()
       .with {
-        $0.parent = "projects/\(projectId)/locations/\(locationId)"
-        $0.queue = Queue() /* .with { ... } */
+        $0.name = "projects/\(projectId)/locations/\(locationId)/cmekConfig"
       }
   )
   print("Success: \(response)")
